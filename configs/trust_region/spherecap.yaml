@@ -1,0 +1,4 @@
+name: spherecap
+fn:
+  _target_: src.trust_region.SphereCap
+  length: 0.1

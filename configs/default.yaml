@@ -1,0 +1,74 @@
+defaults:
+  - benchmark: ???
+  - acquisition: ???
+  - kernel: rbf_dsp
+  - gp: singletaskgp
+  - initializer: sobol
+  - _self_
+  - optional local: default
+  - optional trust_region: null
+
+seed: null
+dtype: "float64"
+device: "cuda"
+trust_region: null
+
+checkpoint:
+  enable: False
+  interval: 10 # Number of batch evaluations before saving checkpoint to disk
+  compress: True # If enabled, compresses the checkpoint file using gzip.
+
+acquisition:
+  q: 1  # Size of batch at each iteration
+  options:
+    optimize_acqf: # Parameters specifically for botorch's optimize_acqf
+      raw_samples: 512
+      num_restarts: 4
+      retry_on_optimization_warning: False
+      options:
+        nonnegative: false
+        sample_around_best: true
+        sample_around_best_sigma: 0.1
+        maxiter: 300
+        batch_limit: 64
+    n_cand: 10000
+    ts_sampler: cholesky
+
+benchmark:  # see subconfigs for benchmark-specific options
+  n_tot: ???  # Total number of points to evaluate function on
+  n_init: ???  # Number of initial points to sample
+  guacamol:
+    models: {}
+  sd:
+    models: {}
+  mujoco:
+    binary_path: null
+    apptainer_sif_path: null
+
+model_fitting:
+  log_prob: false # See GPyTorch settings. If true, model fitting uses conjugate gradients
+  log_prob_threshold: 3000 # Number of data points before log_prob = true
+
+model:
+  mean: "constant"  # Mean function
+  gp: ${gp}
+  kernel: ${kernel}  # Set by the sub-directory
+  likelihood: "gaussian_dsp"
+  outcome_transform: standardize
+  outputscale:
+    type: "fixed" # Fixed, learn
+    param: 1
+
+logging:
+  tqdm:  # Set to `false` or `null` to disable tqdm status bar
+    - "iter_since_new_inc"
+    - "y_max"
+    - 'torch_mem_gib'
+  debug_linalg: false # If true, prints out expensive linear algebra operations being performed under-the-hood
+  wandb:  # Set to `false` or `null` to disable wandb logging
+    project: default  # Wandb project name
+  wandb_artifacts: # keys to send to wandb as artifacts after optimization
+    - "outputscales"
+    - "noises"
+    - "itrs"
+    - "Ys"

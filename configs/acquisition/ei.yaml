@@ -1,0 +1,7 @@
+name: ei
+fn:
+  _target_: src.acquisitions.LogExpectedImprovement
+  gen_candidates_func: scipy
+  cpu_fallback: false
+  noisy: false
+

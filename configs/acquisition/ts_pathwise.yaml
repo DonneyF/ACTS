@@ -1,0 +1,3 @@
+name: ts_pathwise
+fn:
+  _target_: src.acquisitions.PathwiseThompsonSampling

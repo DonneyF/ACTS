@@ -1,0 +1,4 @@
+name: "rbf_dsp"
+fn:
+  _target_: kernels.rbf_factory
+  dsp: true

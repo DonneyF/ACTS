@@ -1,0 +1,47 @@
+[tool.ruff]
+include = [
+    "pyproject.toml"
+]
+indent-width = 4
+line-length = 120
+target-version = "py310"
+
+
+[tool.ruff.format]
+# Enable auto-formatting of code examples in docstrings
+docstring-code-format = true
+docstring-code-line-length = 80
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+# Like Black, use double quotes for strings.
+quote-style = "double"
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`) codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = [
+    "C4",  # simplify comprehensions
+    "D1",  # pydocstyle
+    "E",  # pycodestyle error
+    "F",  # pyflakes error
+    "N",  # pep8 naming
+    "I",  # isort
+    "T201",  # disallow print statements
+]
+ignore = [
+    "D107",  # undocumented-public-init
+    "E402",  # module-level import not at top of file, needed for rootutils override
+    "F722",  # forward-annotation-syntax-error
+    "N803",  # invalid-argument-name
+    "N806",  # non-lowercase-variable-in-function
+]
+
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2

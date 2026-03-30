@@ -1,0 +1,4 @@
+name: ts_cand
+fn:
+  _target_: src.acquisitions.CandidateThompsonSampling
+  candidate_policy: raasp

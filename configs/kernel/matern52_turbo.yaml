@@ -1,0 +1,10 @@
+# Matern(5/2) with lengthscale constraint used by TurBO when using ARD.
+# When using this kernel you should also enable outputscale learning.
+name: "matern52_turbo"
+fn:
+  _target_: kernels.matern_factory
+  dsp: false
+  lengthscale_constraint:
+    _target_: gpytorch.constraints.Interval
+    lower_bound: 0.0
+    upper_bound: 2.0

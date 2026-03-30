@@ -1,0 +1,16 @@
+repos:
+  # Csode formatting/linting/sorting
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.11.2
+    hooks:
+      - id: ruff-format # formatter
+        types_or: [python, pyi, jupyter, toml]
+      - id: ruff # linter
+        args: ["--fix"]
+        types_or: [python, pyi, jupyter, toml]
+
+  # Prevent committing secrets
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.5.0
+    hooks:
+    - id: detect-secrets

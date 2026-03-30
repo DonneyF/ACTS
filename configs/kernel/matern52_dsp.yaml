@@ -1,0 +1,4 @@
+name: "matern52_dsp"
+fn:
+  _target_: kernels.matern_factory
+  dsp: true

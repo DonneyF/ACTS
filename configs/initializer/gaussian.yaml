@@ -1,0 +1,2 @@
+name: gaussian
+_target_: src.initializers.gaussian

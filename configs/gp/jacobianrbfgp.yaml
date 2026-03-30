@@ -1,0 +1,4 @@
+name: JacobianRBFGP
+fn:
+  _target_: src.models.JacobianRBFGP
+  dsp: true

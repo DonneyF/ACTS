@@ -1,0 +1,4 @@
+name: "rbf"
+fn:
+  _target_: kernels.rbf_factory
+  dsp: false

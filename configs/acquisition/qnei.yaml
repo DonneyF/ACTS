@@ -1,0 +1,4 @@
+name: qnei
+fn:
+  _target_: src.acquisitions.qLogExpectedImprovement
+  noisy: true

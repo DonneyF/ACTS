@@ -1,0 +1,3 @@
+name: SingleTaskGP
+fn:
+  _target_: botorch.models.SingleTaskGP
